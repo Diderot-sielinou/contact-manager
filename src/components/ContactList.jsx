@@ -15,11 +15,8 @@ export default function ContactList({ nagigate }) {
   );
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="container">
-        <div className="flex justify-center m-7">
-          <h1 className="text-2xl text-slate-400 uppercase ">contact app</h1>
-        </div>
+    <div className=" min-h-[100vh]">
+      <div className="container m-auto">
         <div className="">
           <div className="flex flex-col">
             <div className=" overflow-x-auto">
@@ -57,7 +54,7 @@ export default function ContactList({ nagigate }) {
                     </div>
                     <input
                       type="text"
-                      className="block w-50 h-8 pr-5 pl-10 py-2 text-xs font-mono shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none"
+                      className="block w-60 h-10 pr-5 pl-10 py-2 text-xs font-mono shadow-xs text-gray-900 bg-transparent border border-gray-300 rounded-full placeholder-gray-400 focus:outline-none"
                       placeholder="Search.."
                       value={searchValue}
                       onChange={(e) => setSearchValue(e.target.value)}

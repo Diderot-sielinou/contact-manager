@@ -6,13 +6,12 @@ import { updateContact } from "../app/features/counter/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-
 export default function EditForm({ contactID }) {
   const contactData = useSelector((state) => state.contactList.contacts);
   const dispatch = useDispatch();
   const user = contactData.find((contact) => contact.id === contactID);
   const newUSer = { ...user };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const initialValues = newUSer || {
     fullName: "",
     email: "",
@@ -25,18 +24,37 @@ export default function EditForm({ contactID }) {
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       // console.log(values)
-      dispatch(updateContact({id:contactID,updatedUser:values}))
+      dispatch(updateContact({ id: contactID, updatedUser: values }));
       resetForm();
-      navigate("/")
+      navigate("/");
     },
   });
 
+  const handleCancel =()=>{
+    if(!formik.dirty){
+      navigate("/")
+    }
+
+    if(formik.dirty){
+      if(confirm("Do you want to cancel the changes?")){
+        navigate("/")
+      }
+    }
+    
+  }
+
   return (
-    <div className=" w-full h-[100vh] flex items-center justify-center ">
+    <div className=" w-full h-[100vh] flex items-center justify-center font-serif ">
       <form
         onSubmit={formik.handleSubmit}
         className=" p-3 lg:p-10 md:p-4  container max-w-3xl border-2 border-gray-300 rounded-2xl  shadow-2xl"
       >
+        <div className="flex justify-center">
+          <h1 className="text-2xl text-black uppercase font-serif mb-2 ">
+            edit contact
+          </h1>
+        </div>
+
         <div className="relative mb-3">
           <label className="flex  items-center mb-2 text-gray-600 text-sm font-medium">
             Full Name{" "}
@@ -194,12 +212,15 @@ export default function EditForm({ contactID }) {
             </div>
           ) : null}
         </div>
-        <button
-         
-          className=" flex items-center justify-center mx-auto w-30 h-8 md:w-50 md:h-11 shadow-sm rounded-full bg-indigo-600 hover:bg-indigo-800 transition-all duration-700 text-white text-base font-semibold leading-7"
-        >
+        <div className="flex items-center justify-center gap-3">
+        <button className=" flex items-center justify-center mx-auto w-30 h-8 md:w-50 md:h-11 shadow-sm rounded-full bg-indigo-600 hover:bg-indigo-800 transition-all duration-700 text-white text-base font-semibold leading-7">
           Save contact
         </button>
+        <button onClick={()=>handleCancel()} type="button" className=" flex items-center justify-center mx-auto w-30 h-8 md:w-50 md:h-11 shadow-sm rounded-full bg-indigo-600 hover:bg-indigo-800 transition-all duration-700 text-white text-base font-semibold leading-7">
+          cancel
+        </button>
+
+        </div>
       </form>
     </div>
   );

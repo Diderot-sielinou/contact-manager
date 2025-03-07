@@ -3,14 +3,12 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import validationSchema from "../validate.js";
 import { addContacts } from "../app/features/counter/counterSlice";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-
-
 export default function AddForm() {
-  const dispatch = useDispatch()
-  let navigate=useNavigate()
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -21,18 +19,25 @@ export default function AddForm() {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      dispatch(addContacts(values))
+      dispatch(addContacts(values));
       resetForm();
-      navigate("/")
+      navigate("/");
     },
   });
 
+
+
   return (
-    <div className=" w-[90%] m-auto md:w-full h-[100vh] flex items-center justify-center ">
+    <div className=" w-[90%] mx-auto md:w-full h-[100vh] flex items-center justify-center font-serif ">
       <form
         onSubmit={formik.handleSubmit}
-        className=" p-3 lg:p-10 md:p-4  container max-w-3xl border-2 border-gray-300 rounded-2xl  shadow-2xl"
+        className=" p-3 lg:p-10 md:p-2  container max-w-3xl border-2 border-gray-300 rounded-2xl  shadow-2xl"
       >
+        <div className="flex justify-center">
+          <h1 className="text-2xl text-black uppercase font-serif mb-2 ">
+            add new contact
+          </h1>
+        </div>
         <div className="relative mb-3">
           <label className="flex  items-center mb-2 text-gray-600 text-sm font-medium">
             Full Name{" "}
