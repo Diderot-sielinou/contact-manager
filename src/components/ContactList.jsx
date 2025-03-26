@@ -16,7 +16,7 @@ export default function ContactList({ nagigate }) {
 
   return (
     <div className=" min-h-[100vh]">
-      <div className="container m-auto">
+      <div className="container m-auto px-[23px]">
         <div className="">
           <div className="flex flex-col">
             <div className=" overflow-x-auto">

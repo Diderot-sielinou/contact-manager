@@ -196,6 +196,7 @@ export default function AddForm() {
           ) : null}
         </div>
         <button
+        type="submit"
           disabled={!(formik.isValid && formik.dirty)}
           className=" flex items-center justify-center mx-auto w-30 h-8 md:w-50 md:h-11 shadow-sm rounded-full bg-indigo-600 hover:bg-indigo-800 transition-all duration-700 text-white text-base font-semibold leading-7"
         >
