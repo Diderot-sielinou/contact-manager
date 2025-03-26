@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div>
       <div className="flex justify-center my-7">
-        <h1 className="text-2xl text-black uppercase font-serif ">
+        <h1 className="text-2xl text-black uppercase font-bold ">
           contact list
         </h1>
       </div>
